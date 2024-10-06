@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-SERVICE_NAME=central-mandala-tg-bot
-COMPANY_NAME=advayta
+SERVICE_NAME=tg-bot
+COMPANY_NAME=central-mandala
 CMD=$1
 
 case ${CMD} in
@@ -52,10 +52,10 @@ help)
   ;;
 
 run-dev)
-  python app
+  python bot.py
   ;;
 
 run)
-  python app
+  python bot.py
   ;;
 esac
