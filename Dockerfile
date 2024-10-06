@@ -18,6 +18,4 @@ COPY --chown=python:python . .
 
 RUN pip install -r requirements.txt
 
-EXPOSE 8085
-
-CMD ["python", "app"]
+CMD ["./make.sh", "run"]
