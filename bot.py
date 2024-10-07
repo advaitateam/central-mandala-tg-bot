@@ -30,7 +30,8 @@ async def forward(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         logging.info(f"Пересылаем сообщение: {message}")
         try:
             await context.bot.send_message(chat_id=FORWARD_CHAT_ID, text=message)
-            await update.message.reply_text("Сообщение переслано!")
+            if update.message.from_user:
+                await update.message.from_user.send_message(f"Ваша заявка принята. Номер вашей заявки {message.id}")
         except Exception as e:
             logging.error(f"Ошибка при пересылке сообщения: {e}")
             await update.message.reply_text("Не удалось переслать сообщение.")
@@ -43,7 +44,6 @@ async def forward_to_group(update: Update, context):
     # Пересылаем сообщение в группу
     if message:
         await message.forward(chat_id=FORWARD_CHAT_ID)
-        await message.reply_text(f"Ваша заявка принята. Номер вашей заявки {message.id}")
 
 if __name__ == '__main__':
     # Создаем приложение и передаем токен бота
