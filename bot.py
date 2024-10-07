@@ -43,6 +43,7 @@ async def forward_to_group(update: Update, context):
     # Пересылаем сообщение в группу
     if message:
         await message.forward(chat_id=FORWARD_CHAT_ID)
+        await message.reply_text(f"Ваша заявка принята. Номер вашей заявки {message.id}")
 
 if __name__ == '__main__':
     # Создаем приложение и передаем токен бота
