@@ -31,7 +31,7 @@ async def forward(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         try:
             await context.bot.send_message(chat_id=FORWARD_CHAT_ID, text=message)
             if update.message.from_user:
-                await update.message.from_user.send_message(f"Ваша заявка принята. Номер вашей заявки {message.id}")
+                await update.message.from_user.send_message(f"Ваша заявка принята. Номер вашей заявки {update.message.id}")
         except Exception as e:
             logging.error(f"Ошибка при пересылке сообщения: {e}")
             await update.message.reply_text("Не удалось переслать сообщение.")
